@@ -1,4 +1,4 @@
-@file:OptIn(ExperimentalComposeUiApi::class)
+@file:OptIn(ExperimentalComposeUiApi::class, ExperimentalLayoutApi::class)
 
 package com.techlads.otpcomposable
 
@@ -14,6 +14,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -64,7 +65,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(), color = colorScheme.background
                 ) {
                     Column(
-                        modifier = Modifier.fillMaxSize().padding(32.dp),
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(32.dp),
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
@@ -96,8 +99,8 @@ class MainActivity : ComponentActivity() {
                                 CodeState.Valid -> {
                                     Text(
                                         text = "A successful OTP submission",
-                                        style = MaterialTheme.typography.bodyMedium.copy(
-                                            color = Color.Green.compositeOver(colorScheme.secondary)
+                                        style = MaterialTheme.typography.bodyLarge.copy(
+                                            color = Color(0xFF467408).compositeOver(colorScheme.secondary)
                                         ),
                                         modifier = Modifier.align(Alignment.CenterHorizontally)
                                     )
@@ -110,7 +113,7 @@ class MainActivity : ComponentActivity() {
                                 }
 
                                 CodeState.Invalid -> {
-                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Column (horizontalAlignment = Alignment.CenterHorizontally){34234
                                         Text(
                                             text = "Unsuccessful OTP submission, please try again",
                                             style = MaterialTheme.typography.bodyMedium.copy(
@@ -122,17 +125,17 @@ class MainActivity : ComponentActivity() {
                                         }) {
                                             Text(
                                                 text = "Clear",
-                                                style = MaterialTheme.typography.bodyMedium
+                                                style = MaterialTheme.typography.bodyLarge
                                             )
                                         }
                                     }
                                 }
 
                                 else -> {
-                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Column (horizontalAlignment = Alignment.CenterHorizontally){
                                         Text(
-                                            text = "Didn't got the OTP? Resend",
-                                            style = MaterialTheme.typography.bodyMedium,
+                                            text = "Didn't got the OTP?",
+                                            style = MaterialTheme.typography.bodyLarge,
                                         )
                                         TextButton(onClick = {
                                             Toast.makeText(
@@ -143,7 +146,7 @@ class MainActivity : ComponentActivity() {
                                         }) {
                                             Text(
                                                 text = "Resend",
-                                                style = MaterialTheme.typography.bodyMedium
+                                                style = MaterialTheme.typography.bodyLarge
                                             )
                                         }
                                     }
